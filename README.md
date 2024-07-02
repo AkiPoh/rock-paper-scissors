@@ -3,8 +3,10 @@ This project is being done as part of The Odin Project course as the first pract
 
 ## Development
 2.7.2024 - 
+
 ### Dev Stage 1
 2.7.2024 - 
+
 Establish basic functionality and make the game playable (without UI).
 - [x] Set up project
     - Create Github project
