@@ -20,7 +20,7 @@ Establish basic functionality and make the game playable (without UI).
     - Trim whitespaces from input
     - Set input to lower case letters
     - Ensure that the input is valid, if not request again
-- [ ] Implement "playRound(humanChoice, computerChoice)"
+- [x] Implement "playRound(humanChoice, computerChoice)"
     - Add global "humanScore" and "computerScore" variables
     - Checks round winner
     - Increases round winners score by 1
@@ -28,3 +28,14 @@ Establish basic functionality and make the game playable (without UI).
 - [ ] Implement "playGame()"
     - Plays 5 rounds
     - At the end announce game winner with both scores, in the console
+
+
+#### Logic:
+
+rock loses paper
+
+rock wins scissors
+
+paper loses scissors
+
+everything else is a tie
