@@ -12,10 +12,10 @@ Establish basic functionality and make the game playable (without UI).
     - Create Github project
     - Write project outline
     - Create HTML with externally linked Javascript script
-- [ ] Implement "getComputerChoice()"
+- [x] Implement "getComputerChoice()"
     - Randomyly returns "rock", "paper" or scissors
     - Validate functionality
-- [ ] Implement "getHumanChoice()"
+- [x] Implement "getHumanChoice()"
     - With "prompt()" ask for user input
     - Trim whitespaces from input
     - Set input to lower case letters

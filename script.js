@@ -12,4 +12,25 @@ function getComputerChoice() {
     }
 }
 
+function validateChoice(choice) {
+    if (choice === "rock" || choice === "paper" || choice === "scissors") {
+        return true;
+    }
+}
+
+function getHumanChoice() {
+    let userInputRequestMessage = 'Choose "rock", "paper" or "scissors": ';
+    let exclamationMarks = "!"; //"!" added every time input entered wront
+    while (true) {
+    let userInput = prompt(userInputRequestMessage).trim().toLowerCase();
+    if (validateChoice(userInput) === true) {
+        return userInput;
+        } else {
+            userInputRequestMessage = `Please enter valid input${exclamationMarks}\nChoose "rock", "paper" or "scissors": `;
+            exclamationMarks += "!"
+        }
+    }
+}
+
 console.log(getComputerChoice());
+console.log(getHumanChoice());
