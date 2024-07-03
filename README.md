@@ -5,7 +5,7 @@ This project is being done as part of The Odin Project course as the first pract
 2.7.2024 - 
 
 ### Dev Stage 1
-2.7.2024 - 
+2.7.2024 - 3.7.2024
 
 Establish basic functionality and make the game playable (without UI).
 - [x] Set up project
@@ -25,7 +25,7 @@ Establish basic functionality and make the game playable (without UI).
     - Checks round winner
     - Increases round winners score by 1
     - Announce round winner and both scores, in the console
-- [ ] Implement "playGame()"
+- [x] Implement "playGame()"
     - Plays 5 rounds
     - At the end announce game winner with both scores, in the console
 
