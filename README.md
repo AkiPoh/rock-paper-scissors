@@ -54,7 +54,7 @@ Add UI, and make necessary modifcations to script.
     - Ensure consistent use of variables like ROCK, PAPER, etc
     - Add function for button press handling
 - [x] Merge rps-ui with main
-    1. git checkout mian
+    1. git checkout main
     2. git merge rps-ui
     3. git push origin main
     4. git branch -d rps-ui
