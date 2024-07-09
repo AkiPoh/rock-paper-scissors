@@ -47,7 +47,7 @@ Add UI, and make necessary modifcations to app.
 - [x] Set up GIT branch for rps-ui
 - [x] Add "rock", "paper" and "scissors" buttons
     - Add event listeners that calls playRound() with correct playerSelection
-- [ ] Add div for displaying results
+- [x] Add div for displaying results
     - Remove console.log() and replace them with DOM methods
 - [ ] Display running score, and announce winner after computer or player reaches 5 points
 - [ ] Merge rps-ui with main

@@ -52,18 +52,29 @@ function decideWinner (humanChoice, machineChoice) {
 function playRound(humanChoice, roundNumber = "roundNumberUnspecified") {
     let machineChoice = getMachineChoice();
     let winner = decideWinner(humanChoice, machineChoice);
+    let resultMessage = '';
+
     if (winner === HUMAN) {
         ++humanScore;
-        console.log(`You won, round ${roundNumber}!\nYour score: ${humanScore}.\nMachine score: ${machineScore}\nYou chose ${humanChoice}, the machine chose ${machineChoice}.`);
-        return;
+        resultMessage = `You won, round ${roundNumber}!\n` +
+                        `Your score: ${humanScore}.\n` +
+                        `Machine score: ${machineScore}\n` +
+                        `You chose ${humanChoice}, the machine chose ${machineChoice}.`;
     } else if (winner === MACHINE) {
         ++machineScore;
-        console.log(`You lost, round ${roundNumber}!\nYour score: ${humanScore}.\nMachine score: ${machineScore}\nYou chose ${humanChoice}, the machine chose ${machineChoice}.`);
-        return;
+        resultMessage = `You lost, round ${roundNumber}!\n` +
+                        `Your score: ${humanScore}.\n` +
+                        `Machine score: ${machineScore}\n` +
+                        `You chose ${humanChoice}, the machine chose ${machineChoice}.`;
     } else {
-        console.log(`It's a tie, round ${roundNumber}!\nYour score: ${humanScore}.\nMachine score: ${machineScore}\nYou chose ${humanChoice}, the machine chose ${machineChoice}.`);
-        return;
+        resultMessage = `It's a tie, round ${roundNumber}!\n` +
+                        `Your score: ${humanScore}.\n` +
+                        `Machine score: ${machineScore}\n` +
+                        `You chose ${humanChoice}, the machine chose ${machineChoice}.`;
     }
+
+    roundResultDiv.textContent = resultMessage;
+    roundResultDiv.style.whiteSpace = 'pre-line';
 }
 
 function playGame() {
@@ -94,6 +105,8 @@ let roundNumber = 0;
 const rockButton = document.querySelector("#rockButton");
 const paperButton = document.querySelector("#paperButton");
 const scissorsButton = document.querySelector("#scissorsButton");
+const roundResultDiv = document.querySelector("#roundResult");
+
 
 console.log("Welome to playing Rock Paper Scissors!");
 
