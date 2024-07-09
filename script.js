@@ -1,5 +1,3 @@
-
-
 function getMachineChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
     switch(randomNumber) {
@@ -9,26 +7,6 @@ function getMachineChoice() {
             return PAPER;
         case 2:
             return SCISSORS;
-    }
-}
-
-function validateChoice(choice) {
-    if (choice === ROCK || choice === PAPER || choice === SCISSORS) {
-        return true;
-    }
-}
-
-function getHumanChoice() {
-    let userInputRequestMessage = 'Choose "rock", "paper" or "scissors": ';
-    let exclamationMarks = "!"; //"!" added every time input entered wrong
-    while (true) {
-    let userInput = prompt(userInputRequestMessage).trim().toLowerCase();
-    if (validateChoice(userInput) === true) {
-        return userInput;
-        } else {
-            userInputRequestMessage = `Please enter valid input${exclamationMarks}\nChoose "rock", "paper" or "scissors": `;
-            exclamationMarks += "!";
-        }
     }
 }
 
@@ -53,6 +31,7 @@ function playRound(humanChoice, roundNumber = "roundNumberUnspecified") {
     let machineChoice = getMachineChoice();
     let winner = decideWinner(humanChoice, machineChoice);
     let resultMessage = '';
+    let gameMessage = "";
 
     if (winner === HUMAN) {
         ++humanScore;
@@ -73,23 +52,19 @@ function playRound(humanChoice, roundNumber = "roundNumberUnspecified") {
                         `You chose ${humanChoice}, the machine chose ${machineChoice}.`;
     }
 
+    if ((humanScore >= scoreToWin || machineScore >= scoreToWin) && humanScore !== machineScore) {
+        if (humanScore > machineScore) {
+            gameMessage = `\n\nYou won, the game of ${roundNumber} rounds!\nYour score: ${humanScore}.\nMachine score: ${machineScore}`;
+        } else if (machineScore > humanScore) {
+            gameMessage = `\n\nYou lost, the game of ${roundNumber} rounds!\nYour score: ${humanScore}.\nMachine score: ${machineScore}`;
+        } else {
+            gameMessage = `\n\nThe game is a tie, of ${roundNumber} rounds!\nYour score: ${humanScore}.\nMachine score: ${machineScore}`;
+        }
+        resultMessage = resultMessage + gameMessage;
+    }
+
     roundResultDiv.textContent = resultMessage;
     roundResultDiv.style.whiteSpace = 'pre-line';
-}
-
-function playGame() {
-    let roundNumber;
-    for (roundNumber = 1; roundNumber <= 5; roundNumber++) {
-        playRound(roundNumber);
-    }
-    roundNumber--;  
-    if (humanScore > machineScore) {
-        console.log(`You won, the game of ${roundNumber} rounds!\nYour score: ${humanScore}.\nMachine score: ${machineScore}`);
-    } else if (machineScore > humanScore) {
-        console.log(`You lost, the game of ${roundNumber} rounds!\nYour score: ${humanScore}.\nMachine score: ${machineScore}`);
-    } else {
-        console.log(`The game is a tie, of ${roundNumber} rounds!\nYour score: ${humanScore}.\nMachine score: ${machineScore}`);
-    }
 }
 
 const ROCK = "rock"
@@ -101,6 +76,7 @@ const MACHINE = "machine"
 let humanScore = 0
 let machineScore = 0
 let roundNumber = 0;
+let scoreToWin = 5;
 
 const rockButton = document.querySelector("#rockButton");
 const paperButton = document.querySelector("#paperButton");
@@ -112,6 +88,6 @@ console.log("Welome to playing Rock Paper Scissors!");
 
 
 
-rockButton.addEventListener("click", () => {roundNumber++; playRound("rock", roundNumber);});
-paperButton.addEventListener("click", () => {roundNumber++; playRound("paper", roundNumber);});
-scissorsButton.addEventListener("click", () => {roundNumber++; playRound("scissors", roundNumber);});
+rockButton.addEventListener("click", () => {roundNumber++; playRound("rock", roundNumber); if ((humanScore >= scoreToWin || machineScore >= scoreToWin) && humanScore !== machineScore) {roundNumber = 0; humanScore = 0; machineScore = 0;}});
+paperButton.addEventListener("click", () => {roundNumber++; playRound("paper", roundNumber); if ((humanScore >= scoreToWin || machineScore >= scoreToWin) && humanScore !== machineScore) {roundNumber = 0; humanScore = 0; machineScore = 0;}});
+scissorsButton.addEventListener("click", () => {roundNumber++; playRound("scissors", roundNumber); if ((humanScore >= scoreToWin || machineScore >= scoreToWin) && humanScore !== machineScore) {roundNumber = 0; humanScore = 0; machineScore = 0;}});
