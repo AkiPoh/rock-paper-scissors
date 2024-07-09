@@ -24,7 +24,7 @@ function decideWinner (humanChoice, machineChoice) {
     } else if (machineChoice === SCISSORS && humanChoice === PAPER) {
         return MACHINE;
     }
-    return("tie");
+    return(TIE);
 }
 
 function playRound(humanChoice, roundNumber = "roundNumberUnspecified") {
@@ -72,6 +72,7 @@ const PAPER = "paper"
 const SCISSORS = "scissors"
 const HUMAN = "human"
 const MACHINE = "machine"
+const TIE = "tie"
 
 let humanScore = 0
 let machineScore = 0
@@ -86,8 +87,16 @@ const roundResultDiv = document.querySelector("#roundResult");
 
 console.log("Welome to playing Rock Paper Scissors!");
 
+function handleButtonPress (humanChoice) {
+    roundNumber++;
+    playRound(humanChoice, roundNumber);
+    if ((humanScore >= scoreToWin || machineScore >= scoreToWin) && humanScore !== machineScore) {
+        roundNumber = 0;
+        humanScore = 0;
+        machineScore = 0;
+    }
+}
 
-
-rockButton.addEventListener("click", () => {roundNumber++; playRound("rock", roundNumber); if ((humanScore >= scoreToWin || machineScore >= scoreToWin) && humanScore !== machineScore) {roundNumber = 0; humanScore = 0; machineScore = 0;}});
-paperButton.addEventListener("click", () => {roundNumber++; playRound("paper", roundNumber); if ((humanScore >= scoreToWin || machineScore >= scoreToWin) && humanScore !== machineScore) {roundNumber = 0; humanScore = 0; machineScore = 0;}});
-scissorsButton.addEventListener("click", () => {roundNumber++; playRound("scissors", roundNumber); if ((humanScore >= scoreToWin || machineScore >= scoreToWin) && humanScore !== machineScore) {roundNumber = 0; humanScore = 0; machineScore = 0;}});
+rockButton.addEventListener("click", () => handleButtonPress(ROCK));
+paperButton.addEventListener("click", () => handleButtonPress(PAPER));
+scissorsButton.addEventListener("click", () => handleButtonPress(SCISSORS));
